@@ -1,0 +1,23 @@
+{
+    "name": "node-scratch",
+    "description": "A scratch app for Node.js.",
+    "author": "Kirk Austin <kirk_austin@cyberlon.com>",
+    "version": "0.1.0",
+    "license" : "BSD-3-Clause",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kirkaustin/node-scratch.git"
+    },
+    "dependencies": {
+        "config": "1.17.x",
+        "bunyan": "1.5.x",
+        "restify": "4.0.x"
+    },
+    "engines" : {
+        "node" : "4.2.x"
+    },
+    "keywords": [
+        "node",
+        "rest"
+     ]
+}
