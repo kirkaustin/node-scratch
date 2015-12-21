@@ -72,4 +72,12 @@ var restify = require('restify');
         directory: './public',
         default: 'index.html'
     }));
+
+    // Fatal situation, write error immediately to file and exit to let forever restart
+    process.on('uncaughtException', function (err) {
+        fs.appendFileSync('fatal.log', '\n' + (new Date).toUTCString() + ' uncaughtException!' + '\n');
+        fs.appendFileSync('fatal.log', err.stack);
+        process.exit(1);
+    });
+
 })();
