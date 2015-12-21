@@ -5,7 +5,7 @@
 if (!this.cyberlon) {
     this.cyberlon = {};
 }
-// depends: jQuery >=2.1.0, jQuery UI Widget >=1.10.4
+// depends: jQuery >=2.1.0, jQuery UI Widget >=1.11.0
 
 (function (cyberlon, $, undefined) {
 
@@ -15,6 +15,7 @@ if (!this.cyberlon) {
         // public instance variables are in options
         options: {
             title: "Clock",
+            display: "00:00:00",
             // callbacks
             create: function (event, data) {
                 // pass a callback,or simply bind on the "clock:create" event, or both
@@ -33,6 +34,10 @@ if (!this.cyberlon) {
             this._setOption('title', title);
         },
 
+        setDisplay: function (display) {
+            this._setOption('display', display);
+        },
+
        // private methods begin with an underscore
         // jQuery UI Widget override
         _create: function () {
@@ -45,6 +50,15 @@ if (!this.cyberlon) {
             // the "ui-widget" class declares it a jQuery UI widget
             this.element.addClass(this.widgetFullName + ' ui-widget');
             // inject DOM elements and bind event handlers
+            this._createDivs('display');
+            var display = this._getElement('display');
+            display.css("width", this.options.width);
+            display.css("height", this.options.height);
+            var paddedHeight = this.options.height - 4;
+            display.css("font-size", paddedHeight + "px");
+            display.css("line-height", paddedHeight + "px");
+            display.text(this.options.display);
+            this.element.append(display);
         },
 
         // jQuery UI Widget override
@@ -144,16 +158,6 @@ if (!this.cyberlon) {
                 }
             }
             return this;
-        },
-
-        // clears out existing style (if any) and sets the style attribute to the passed parameter
-        _setStyle: function (cachedElementKey, style) {
-            var element = this._getElement(cachedElementKey);
-            if (element) {
-                element.removeAttr('style');
-                element.attr('style', ''); // bug fix
-                element.attr('style', style);
-            }
         }
 
     });
