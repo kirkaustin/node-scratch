@@ -67,11 +67,29 @@ var restify = require('restify');
         bunyanLog.info(server.name + " started on port " + serverPort + "!  " + "config: " + JSON.stringify(config));
     });
 
+    // create a web service provider for the config
+   var getConfig = function(req, res, next) {
+        setTimeout(function() {
+            undefinedFunction();
+        }, 1000);
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.json({
+            "config": config
+        });
+    };
+    server.get('/config', getConfig);
+
     // Begin serving static files from the "public" directory
     server.get(/\//, restify.serveStatic({
         directory: './public',
         default: 'index.html'
     }));
+
+    // Restify swallows errors, so we'll make a note of it
+    server.on('uncaughtException', function (req, res, route, err) {
+        console.log("Restify Uncaught Exception --- " + err.stack);
+        bunyanLog.info("Restify Uncaught Exception --- " + err.stack);
+    });
 
     // Fatal situation, write error immediately to file and exit to let forever restart
     process.on('uncaughtException', function (err) {
