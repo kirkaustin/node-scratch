@@ -69,9 +69,6 @@ var restify = require('restify');
 
     // create a web service provider for the config
    var getConfig = function(req, res, next) {
-        setTimeout(function() {
-            undefinedFunction();
-        }, 1000);
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.json({
             "config": config
@@ -87,8 +84,8 @@ var restify = require('restify');
 
     // Restify swallows errors, so we'll make a note of it
     server.on('uncaughtException', function (req, res, route, err) {
-        console.log("Restify Uncaught Exception --- " + err.stack);
-        bunyanLog.info("Restify Uncaught Exception --- " + err.stack);
+        console.log("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
+        bunyanLog.warn("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
     });
 
     // Fatal situation, write error immediately to file and exit to let forever restart
