@@ -1,2 +1,3 @@
 # node-scratch
-A scratch pad for Node.js
+
+A streamlined web server, with REST, configuration, and error handling.
