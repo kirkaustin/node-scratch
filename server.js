@@ -68,7 +68,7 @@ var restify = require('restify');
     });
 
     // create a web service provider for the config
-   var getConfig = function(req, res, next) {
+    var getConfig = function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.json({
             "config": config
@@ -83,13 +83,15 @@ var restify = require('restify');
     }));
 
     // Restify swallows errors, so we'll make a note of it
-    server.on('uncaughtException', function (req, res, route, err) {
+    server.on('uncaughtException', function onUncaughtServerException(req, res, route, err) {
         console.log("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
         bunyanLog.warn("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
     });
 
-    // Fatal situation, write error immediately to file and exit to let forever restart
-    process.on('uncaughtException', function (err) {
+    // Fatal situation, write error immediately to file,
+    // then exit to allow auto restart and later inspection
+    process.on('uncaughtException', function onUncaughtProcessException(err) {
+        console.log(err.stack);
         fs.appendFileSync('fatal.log', '\n' + (new Date).toUTCString() + ' uncaughtException!' + '\n');
         fs.appendFileSync('fatal.log', err.stack);
         process.exit(1);
