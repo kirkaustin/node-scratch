@@ -82,7 +82,7 @@ var restify = require('restify');
         default: 'index.html'
     }));
 
-    // Restify swallows errors, so we'll make a note of it
+    // Restify swallows errors, so we'll make a note of it in the log
     server.on('uncaughtException', function onUncaughtServerException(req, res, route, err) {
         console.log("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
         bunyanLog.warn("Restify Uncaught Exception --- url: " + req.url + ", " + err.stack);
