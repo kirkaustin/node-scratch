@@ -15,6 +15,7 @@ if (!this.cyberlon) {
         // public instance variables are in options
         options: {
             title: "Clock",
+            time: 0, // milliseconds
             display: "00:00:00",
             // callbacks
             create: function (event, data) {
@@ -34,11 +35,15 @@ if (!this.cyberlon) {
             this._setOption('title', title);
         },
 
+        setTime: function (time) { // milliseconds
+            this._setOption('time', time);
+        },
+
         setDisplay: function (display) {
             this._setOption('display', display);
         },
 
-       // private methods begin with an underscore
+        // private methods begin with an underscore
         // jQuery UI Widget override
         _create: function () {
             // private instance variables begin with an underscore

@@ -73,6 +73,7 @@ var restify = require('restify');
         res.json({
             "config": config
         });
+        return next();
     };
     server.get('/config', getConfig);
 
