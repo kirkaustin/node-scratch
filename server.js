@@ -1,5 +1,6 @@
 // server.js
 // author: Kirk Austin
+// A useful starting point for building out more fully-featured servers.
 // Here's an HTTP server more in the style of a C++ app.
 // It demonstrates use of a "main" function and rotating-file logging.
 // Our configuration information is based on the NODE_ENV environment variable.
