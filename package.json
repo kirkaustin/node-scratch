@@ -3,7 +3,7 @@
     "description": "A scratch app for Node.js.",
     "author": "Kirk Austin <kirk@cyberlon.com>",
     "version": "0.1.0",
-    "license" : "UNLICENSED",
+    "license" : "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/kirkaustin/node-scratch.git"
