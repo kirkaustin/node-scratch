@@ -2,19 +2,19 @@
     "name": "node-scratch",
     "description": "A scratch app for Node.js.",
     "author": "Kirk Austin <kirk@cyberlon.com>",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license" : "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/kirkaustin/node-scratch.git"
     },
     "dependencies": {
-        "config": "1.17.x",
-        "bunyan": "1.5.x",
-        "restify": "4.0.x"
+        "config": "1.30.0",
+        "bunyan": "1.8.12",
+        "restify": "7.1.1"
     },
     "engines" : {
-        "node" : "4.2.x"
+        "node" : ">=8.0"
     },
     "keywords": [
         "node",
