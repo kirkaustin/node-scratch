@@ -3,7 +3,7 @@
     "description": "A scratch app for Node.js.",
     "author": "Kirk Austin <kirk@cyberlon.com>",
     "version": "0.2.0",
-    "license" : "MIT",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/kirkaustin/node-scratch.git"
@@ -13,11 +13,11 @@
         "bunyan": "1.8.12",
         "restify": "7.1.1"
     },
-    "engines" : {
-        "node" : ">=8.0"
+    "engines": {
+        "node": ">=8.0"
     },
     "keywords": [
         "node",
         "rest"
-     ]
+    ]
 }

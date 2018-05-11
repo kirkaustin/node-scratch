@@ -79,7 +79,7 @@ var restify = require('restify');
     server.get('/config', getConfig);
 
     // Begin serving static files from the "public" directory
-    server.get(/\//, restify.serveStatic({
+    server.get('/', restify.plugins.serveStatic({
         directory: './public',
         default: 'index.html'
     }));
