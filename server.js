@@ -1,4 +1,4 @@
-// server.js
+// node-scratch server.js
 // author: Kirk Austin
 // A useful starting point for building out more fully-featured servers.
 // Here's an HTTP server more in the style of a C++ app.
@@ -57,7 +57,7 @@ var restify = require('restify');
     };
     var server = restify.createServer(serverOptions);
     // determine which port
-    var serverPort = 8080; // default
+    var serverPort = 3001; // default
     if (config.server && config.server.port) {
         serverPort = config.server.port;
     }
@@ -70,7 +70,6 @@ var restify = require('restify');
 
     // create a web service provider for the config
     var getConfig = function(req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.json({
             "config": config
         });

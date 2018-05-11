@@ -8,16 +8,26 @@
         "type": "git",
         "url": "https://github.com/kirkaustin/node-scratch.git"
     },
+    "scripts": {
+        "start": "concurrently \"npm run server\" \"cd client && npm start\"",
+        "server": "node server.js",
+        "client": "node start-client.js"
+    },
     "dependencies": {
         "config": "1.30.0",
         "bunyan": "1.8.12",
         "restify": "7.1.1"
+    },
+    "devDependencies": {
+        "concurrently": "3.1.0"
     },
     "engines": {
         "node": ">=8.0"
     },
     "keywords": [
         "node",
-        "rest"
+        "rest",
+        "api",
+        "create-rect-app"
     ]
 }
